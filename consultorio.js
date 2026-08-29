@@ -1,3 +1,4 @@
+```javascript
 /* =====================================================
    CONSULTORIO DR BONES
    JAVASCRIPT
@@ -8,13 +9,10 @@
    CONFIGURACIÓN
 ===================================================== */
 
-// AQUÍ COLOCA EL WHATSAPP DEL CONSULTORIO
+// WhatsApp del Consultorio Dr Bones
 // Perú: 51 + número
-//
-// Ejemplo:
-// const WHATSAPP_NUMBER = "51987654321";
 
-const WHATSAPP_NUMBER = "51999999999";
+const WHATSAPP_NUMBER = "51993773054";
 
 
 /* =====================================================
@@ -52,28 +50,20 @@ document.addEventListener("DOMContentLoaded", function () {
 function iniciarMenu() {
 
     const menuBtn = document.getElementById("menuBtn");
-
     const navLinks = document.getElementById("navLinks");
-
 
     if (!menuBtn || !navLinks) {
         return;
     }
 
-
     menuBtn.addEventListener("click", function () {
 
         navLinks.classList.toggle("active");
 
-
         if (navLinks.classList.contains("active")) {
-
             menuBtn.textContent = "✕";
-
         } else {
-
             menuBtn.textContent = "☰";
-
         }
 
     });
@@ -81,13 +71,11 @@ function iniciarMenu() {
 
     const enlaces = navLinks.querySelectorAll("a");
 
-
     enlaces.forEach(function (enlace) {
 
         enlace.addEventListener("click", function () {
 
             navLinks.classList.remove("active");
-
             menuBtn.textContent = "☰";
 
         });
@@ -105,14 +93,11 @@ function configurarFecha() {
 
     const fechaInput = document.getElementById("fecha");
 
-
     if (!fechaInput) {
         return;
     }
 
-
     const hoy = new Date();
-
 
     const anio = hoy.getFullYear();
 
@@ -124,10 +109,8 @@ function configurarFecha() {
         hoy.getDate()
     ).padStart(2, "0");
 
-
     const fechaHoy =
         anio + "-" + mes + "-" + dia;
-
 
     fechaInput.min = fechaHoy;
 
@@ -153,11 +136,9 @@ function iniciarHorarios() {
     const horarios =
         document.querySelectorAll(".time");
 
-
     if (!horarios.length) {
         return;
     }
-
 
     horarios.forEach(function (boton) {
 
@@ -165,8 +146,7 @@ function iniciarHorarios() {
             "click",
             function () {
 
-
-                // Quitar selección de los demás horarios
+                // Quitar selección anterior
 
                 horarios.forEach(function (item) {
 
@@ -213,7 +193,6 @@ function actualizarResumen() {
     const fechaInput =
         document.getElementById("fecha");
 
-
     const resumen =
         document.getElementById(
             "selectedInfo"
@@ -224,10 +203,6 @@ function actualizarResumen() {
         return;
     }
 
-
-    // Si todavía no hay fecha
-    // o no hay hora seleccionada,
-    // ocultamos el resumen.
 
     if (
         !fechaInput.value ||
@@ -278,14 +253,13 @@ function formatearFecha(fecha) {
         return "";
     }
 
-
     const fechaObjeto =
         new Date(
             fecha + "T00:00:00"
         );
 
 
-    let texto =
+    const texto =
         fechaObjeto.toLocaleDateString(
             "es-PE",
             {
@@ -311,7 +285,6 @@ function capitalizar(texto) {
     if (!texto) {
         return "";
     }
-
 
     return texto.charAt(0).toUpperCase()
         + texto.slice(1);
@@ -362,12 +335,6 @@ function enviarCita() {
         );
 
 
-    const telefonoInput =
-        document.getElementById(
-            "telefono"
-        );
-
-
     const fechaInput =
         document.getElementById(
             "fecha"
@@ -386,12 +353,12 @@ function enviarCita() {
         );
 
 
-    // Comprobar que todos
-    // los elementos existen.
+    /* =================================================
+       COMPROBAR ELEMENTOS
+    ================================================= */
 
     if (
         !nombreInput ||
-        !telefonoInput ||
         !fechaInput ||
         !tipoInput ||
         !motivoInput
@@ -412,10 +379,6 @@ function enviarCita() {
 
     const nombre =
         nombreInput.value.trim();
-
-
-    const telefono =
-        telefonoInput.value.trim();
 
 
     const fecha =
@@ -441,23 +404,6 @@ function enviarCita() {
         );
 
         nombreInput.focus();
-
-        return;
-
-    }
-
-
-    /* =================================================
-       VALIDAR TELÉFONO
-    ================================================= */
-
-    if (!telefono) {
-
-        alert(
-            "Por favor, ingresa tu número de WhatsApp."
-        );
-
-        telefonoInput.focus();
 
         return;
 
@@ -566,29 +512,24 @@ function enviarCita() {
         "━━━━━━━━━━━━━━━━━━" +
         "\n\n" +
 
-        "👤 *Paciente:* " +
+        "👤 *Paciente:*" +
         "\n" +
         nombre +
         "\n\n" +
 
-        "📅 *Fecha:* " +
+        "📅 *Fecha:*" +
         "\n" +
         fechaTexto +
         "\n\n" +
 
-        "🕐 *Hora:* " +
+        "🕐 *Hora:*" +
         "\n" +
         horaSeleccionada +
         "\n\n" +
 
-        "📋 *Tipo de consulta:* " +
+        "📋 *Tipo de consulta:*" +
         "\n" +
-        tipo +
-        "\n\n" +
-
-        "📱 *WhatsApp del paciente:* " +
-        "\n" +
-        telefono;
+        tipo;
 
 
     /* =================================================
@@ -600,7 +541,7 @@ function enviarCita() {
         mensaje +=
             "\n\n" +
 
-            "📝 *Motivo:* " +
+            "📝 *Motivo de la consulta:*" +
             "\n" +
 
             motivo;
@@ -626,7 +567,7 @@ function enviarCita() {
 
 
     /* =================================================
-       WHATSAPP
+       ABRIR WHATSAPP
     ================================================= */
 
     const url =
@@ -637,8 +578,6 @@ function enviarCita() {
             mensaje
         );
 
-
-    // Abrir WhatsApp
 
     window.open(
         url,
@@ -717,3 +656,4 @@ function actualizarAnio() {
         new Date().getFullYear();
 
 }
+```
