@@ -655,4 +655,3 @@ function actualizarAnio() {
         new Date().getFullYear();
 
 }
-```
