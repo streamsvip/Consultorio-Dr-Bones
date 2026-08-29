@@ -132,13 +132,6 @@ function configurarFecha() {
     fechaInput.min = fechaHoy;
 
 
-    /*
-
-       Cuando el usuario cambia
-       de fecha actualizamos el resumen.
-
-    */
-
     fechaInput.addEventListener(
         "change",
         function () {
@@ -173,10 +166,7 @@ function iniciarHorarios() {
             function () {
 
 
-                /*
-                   Quitar selección
-                   de los demás horarios
-                */
+                // Quitar selección de los demás horarios
 
                 horarios.forEach(function (item) {
 
@@ -187,18 +177,14 @@ function iniciarHorarios() {
                 });
 
 
-                /*
-                   Seleccionar horario
-                */
+                // Seleccionar horario
 
                 boton.classList.add(
                     "selected"
                 );
 
 
-                /*
-                   Guardar hora
-                */
+                // Guardar hora
 
                 horaSeleccionada =
                     boton.getAttribute(
@@ -206,9 +192,7 @@ function iniciarHorarios() {
                     );
 
 
-                /*
-                   Actualizar resumen
-                */
+                // Actualizar resumen
 
                 actualizarResumen();
 
@@ -241,11 +225,9 @@ function actualizarResumen() {
     }
 
 
-    /*
-       Si todavía no hay fecha
-       o no hay hora seleccionada,
-       ocultamos el resumen.
-    */
+    // Si todavía no hay fecha
+    // o no hay hora seleccionada,
+    // ocultamos el resumen.
 
     if (
         !fechaInput.value ||
@@ -404,10 +386,8 @@ function enviarCita() {
         );
 
 
-    /*
-       Comprobar que todos
-       los elementos existen.
-    */
+    // Comprobar que todos
+    // los elementos existen.
 
     if (
         !nombreInput ||
@@ -658,9 +638,7 @@ function enviarCita() {
         );
 
 
-    /*
-       Abrir WhatsApp
-    */
+    // Abrir WhatsApp
 
     window.open(
         url,
