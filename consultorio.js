@@ -75,6 +75,7 @@ function iniciarMenu() {
         enlace.addEventListener("click", function () {
 
             navLinks.classList.remove("active");
+
             menuBtn.textContent = "☰";
 
         });
