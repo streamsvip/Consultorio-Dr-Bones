@@ -1,4 +1,3 @@
-```javascript
 /* =====================================================
    CONSULTORIO DR BONES
    JAVASCRIPT
