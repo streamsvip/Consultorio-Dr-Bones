@@ -99,7 +99,7 @@ textarea {
 
 .nav {
     width: min(1200px, calc(100% - 40px));
-    height: 76px;
+    height: 84px;
     margin: auto;
 
     display: flex;
@@ -112,7 +112,7 @@ textarea {
 .brand {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 
     color: var(--primary);
 
@@ -120,16 +120,18 @@ textarea {
 }
 
 .brand img {
-    width: 46px;
-    height: 46px;
+    width: 62px;
+    height: 62px;
 
-    object-fit: cover;
+    object-fit: contain;
 
-    border-radius: 12px;
+    border-radius: 14px;
+    filter: drop-shadow(0 5px 12px rgba(7,63,56,.12));
 }
 
 .brand span {
-    font-size: 18px;
+    font-size: 19px;
+    letter-spacing: -.3px;
 }
 
 .nav-links {
@@ -528,15 +530,17 @@ textarea {
 }
 
 .about-image {
-    height: 420px;
+    position: relative;
+    height: 330px;
+    min-height: 330px;
 
     overflow: hidden;
 
     border-radius: 24px;
 
-    box-shadow: var(--shadow);
+    box-shadow: 0 24px 60px rgba(15,72,63,.16);
 
-    background: #e8f3f0;
+    background: #dfeeea;
 }
 
 .about-image img {
@@ -544,6 +548,55 @@ textarea {
     height: 100%;
 
     object-fit: cover;
+    object-position: center;
+
+    transform: scale(1.02);
+}
+
+.about-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(4,40,35,.78) 0%,
+        rgba(4,40,35,.38) 48%,
+        rgba(4,40,35,.08) 100%
+    );
+    pointer-events: none;
+}
+
+.about-banner-content {
+    position: absolute;
+    z-index: 3;
+    left: 34px;
+    bottom: 30px;
+    max-width: 430px;
+    color: white;
+}
+
+.about-banner-content span {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    color: #8de1d2;
+}
+
+.about-banner-content strong {
+    display: block;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.1;
+    letter-spacing: -.8px;
+}
+
+.about-banner-content small {
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #e8f7f4;
 }
 
 .about-content h2 {
@@ -1035,7 +1088,7 @@ textarea {
     .nav-links {
         position: absolute;
 
-        top: 70px;
+        top: 78px;
         left: 0;
 
         width: 100%;
@@ -1168,7 +1221,22 @@ textarea {
 
 
     .about-image {
-        height: 300px;
+        height: 260px;
+        min-height: 260px;
+    }
+
+    .about-banner-content {
+        left: 22px;
+        right: 22px;
+        bottom: 22px;
+    }
+
+    .about-banner-content strong {
+        font-size: 24px;
+    }
+
+    .about-banner-content small {
+        font-size: 12px;
     }
 
     .about-content h2 {
@@ -1219,6 +1287,11 @@ textarea {
 
 
 @media (max-width: 400px) {
+
+    .brand img {
+        width: 54px;
+        height: 54px;
+    }
 
     .brand span {
         font-size: 15px;
